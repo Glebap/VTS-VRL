@@ -6,7 +6,8 @@ public struct VehicleData
 {
 	private const float _minSpeed = 0.0f;
 	private const float _minEngineRpm = 0.0f;
-	
+
+	public readonly Vector3 Position;
 	public readonly float Speed;
 	public readonly float EngineRotations;
 	public readonly bool IsEngineActive;
@@ -15,10 +16,11 @@ public struct VehicleData
 	public readonly int GearMode;
 
 	
-	public VehicleData(DataBus dataBus)
+	public VehicleData(DataBus dataBus, Vector3 position)
 	{
 		var vehicleData = dataBus.Get(Channel.Vehicle);
-		
+
+		Position = position;
 		Speed = Mathf.Max(vehicleData[VehiclePhysics.VehicleData.Speed] / 1000.0f * 3.6f, _minSpeed);
 		EngineRotations= Mathf.Max(vehicleData[VehiclePhysics.VehicleData.EngineRpm] / 1000.0f, _minEngineRpm);
 		IsEngineActive = vehicleData[VehiclePhysics.VehicleData.EngineWorking] == 1;

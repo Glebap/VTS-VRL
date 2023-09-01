@@ -7,7 +7,7 @@ using VehiclePhysics;
 [RequireComponent(typeof(VPTelemetry))]
 [RequireComponent(typeof(VPVisualEffects))]
 [RequireComponent(typeof(VPResetVehicle))]
-public class Vehicle : MonoBehaviour
+public class PlayerVehicle : MonoBehaviour
 {
 	public VehicleBase Base { get; private set; }
 

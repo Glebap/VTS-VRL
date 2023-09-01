@@ -178,12 +178,10 @@ public class Dashboard : MonoBehaviour
 			SetEnabled(singleAxleDiffLockSignal, axleDiffLock && centerDiffUnlock);
 
 			// Speed Mph label
-
 			if (speedMphLabel != null)
 				speedMphLabel.text = (speedMs * 2.237f).ToString("0") + "\nmph";
 
 			// Gear label
-
 			if (gearLabel != null)
 				{
 				int gearId = vehicleData[VehicleData.GearboxGear];

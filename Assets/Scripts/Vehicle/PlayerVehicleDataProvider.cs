@@ -1,17 +1,18 @@
-using UnityEngine;
 using VehiclePhysics;
 
 
 public class PlayerVehicleDataProvider
 {
     private readonly VehicleBase _vehicle;
-    private readonly Transform _vehicleTransform;
-
-
-    public PlayerVehicleDataProvider(VehicleBase vehicle)
+    private readonly NearVehicleObserver _nearVehicleObserver;
+    
+    
+    public PlayerVehicleDataProvider(VehicleBase vehicle, NearVehicleObserver nearVehicleObserver)
     {
         _vehicle = vehicle;
-        _vehicleTransform = vehicle.transform;
+        _nearVehicleObserver = nearVehicleObserver;
+        
+        nearVehicleObserver.Initialize(_vehicle.transform);
     }
     
     public bool TryGetData(out VehicleData data)
@@ -20,7 +21,10 @@ public class PlayerVehicleDataProvider
         if (_vehicle == null || !_vehicle.isActiveAndEnabled)
             return false;
 
-        data = new VehicleData(_vehicle.data, _vehicleTransform.position);
+        data = _nearVehicleObserver.TryGetNearVehicleDistance(out var distance) 
+            ? new VehicleData(_vehicle.data, distance) 
+            : new VehicleData(_vehicle.data);
+            
         return true;
     }
 }

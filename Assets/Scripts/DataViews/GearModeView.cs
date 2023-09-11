@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class GearModeView : VehicleDataView
 {
-    [SerializeField] private string _defaultView = "";
+    [SerializeField] private string _defaultView = "-";
     [SerializeField] private TMP_Text _view;
     
     

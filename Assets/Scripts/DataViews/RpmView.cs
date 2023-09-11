@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class RpmView : VehicleDataView
 {
-    [SerializeField] private string _defaultView = "0";
+    [SerializeField] private string _defaultView = "-";
     [SerializeField] private TMP_Text _view;
     
     

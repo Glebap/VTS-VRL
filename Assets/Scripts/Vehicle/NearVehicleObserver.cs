@@ -1,66 +1,93 @@
 using UnityEngine;
-using VehiclePhysics;
 
 
 public class NearVehicleObserver : MonoBehaviour
 {
     [SerializeField] private Camera _mainCamera;
+    [SerializeField] private LayerMask _vehicleLayerMask;
+    [SerializeField] private LayerMask _obstacleLayerMask;
     [SerializeField] private int _maxVehicles = 10;
     [SerializeField] private float _maxDistance = 20f;
-    [SerializeField] private LayerMask vehicleLayer;
 
-    private VPCameraController _cameraController;
-
-    private Collider[] _nearColliders;
+    private Collider[] _nearVehiclesColliders;
+    private Transform _vehicleTransform;
     
     
-    private void Awake()
+    public void Initialize(Transform vehicleTransform)
     {
-        _nearColliders = new Collider[_maxVehicles];
+        _nearVehiclesColliders = new Collider[_maxVehicles];
+        _vehicleTransform = vehicleTransform;
     }
 
-    public float? GetNearVehicleDistance(Vector3 vehiclePosition)
+    public bool TryGetNearVehicleDistance(out float distance)
     {
-        var size = Physics.OverlapSphereNonAlloc(vehiclePosition, 
-            _maxDistance, _nearColliders, vehicleLayer);
+        distance = float.MaxValue;
+        if (!IsAnyVehicleInProximity(out int count))
+            return false;
 
-        if (size <= 0)
-            return null;
-
-        float nearestDistance = float.MaxValue;
-        for (var i = 0; i < size; i++)
+        var nearestVehiclePosition = new Vector3();
+        for (var i = 0; i < count; i++)
         {
-            var nearVehiclePosition = _nearColliders[i].transform.position;
-            if (HasObstacleBetweenPlayerAndCar(vehiclePosition, nearVehiclePosition) 
-                || !IsInFieldOfView(nearVehiclePosition)) continue;
+            var nearVehiclePosition = _nearVehiclesColliders[i].transform.position;
+            nearVehiclePosition.y += 1.0f;
             
-            float distance = Vector3.Distance(vehiclePosition, nearVehiclePosition);
-            
-            if (distance < nearestDistance)
+            var distanceToNearVehicle = GetDistanceToNearVehicle(nearVehiclePosition);
+            if (distanceToNearVehicle < distance)
             {
-                nearestDistance = distance;
+                distance = distanceToNearVehicle;
+                nearestVehiclePosition = nearVehiclePosition;
             }
         }
 
-        return nearestDistance > _maxDistance ? null : nearestDistance;
+        return distance <= _maxDistance && IsVehicleVisible(nearestVehiclePosition);
     }
 
-    private bool HasObstacleBetweenPlayerAndCar(Vector3 vehiclePosition, Vector3 nearVehiclePosition)
+    private float GetDistanceToNearVehicle(Vector3 nearVehiclePosition)
     {
-        Vector3 direction = nearVehiclePosition - vehiclePosition;
+        var vehiclePosition = _vehicleTransform.position;
+        vehiclePosition.y += 1.0f;
         
-        return Physics.Raycast(new Ray(vehiclePosition, direction), out RaycastHit hit, _maxDistance) 
-               && hit.collider.gameObject.layer != vehicleLayer;
+        var direction = nearVehiclePosition - vehiclePosition;
+        var ray = new Ray(vehiclePosition, direction);
+        var lenght = direction.magnitude;
+        
+        return Physics.Raycast(ray, out var hit, lenght, _vehicleLayerMask) 
+            ? Vector3.Distance(vehiclePosition, hit.point) 
+            : lenght;
     }
 
-    private bool IsInFieldOfView(Vector3 targetPosition)
+    
+    private bool IsAnyVehicleInProximity(out int count)
+    {
+        count = Physics.OverlapSphereNonAlloc(_vehicleTransform.position, 
+            _maxDistance, _nearVehiclesColliders, _vehicleLayerMask);
+
+        return count > 0;
+    }
+
+    private bool IsVehicleVisible(Vector3 vehiclePosition)
+    {
+        return IsVehicleWithinFieldOfView(vehiclePosition) 
+               && !HasObstacleInLineOfSight(vehiclePosition);
+    }
+
+    private bool HasObstacleInLineOfSight(Vector3 vehiclePosition)
+    {
+        var cameraPosition = _mainCamera.transform.position;
+        var direction = vehiclePosition - cameraPosition;
+        var ray = new Ray(cameraPosition, direction);
+
+        return Physics.Raycast(ray, out _, direction.magnitude, _obstacleLayerMask);
+    }
+
+    private bool IsVehicleWithinFieldOfView(Vector3 vehiclePosition)
     {
         var cameraTransform = _mainCamera.transform;
-        Vector3 toTarget = targetPosition - cameraTransform.position;
-        float angle = Vector3.Angle(toTarget, cameraTransform.forward);
+        var toTarget = vehiclePosition - cameraTransform.position;
+        var horizontalFieldOfView = 2f * Mathf.Atan(Mathf.Tan(_mainCamera.fieldOfView 
+            * Mathf.Deg2Rad / 2f) *  _mainCamera.aspect) * Mathf.Rad2Deg;
 
-        float fieldOfView = _mainCamera.fieldOfView;
-
-        return angle <= fieldOfView / 2f;
+        return Vector3.Angle(toTarget, cameraTransform.forward) <= horizontalFieldOfView / 2f;
     }
+
 }

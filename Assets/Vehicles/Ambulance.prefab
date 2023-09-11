@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 414018}
-  m_Layer: 3
+  m_Layer: 7
   m_Name: DriverHead
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -40,7 +40,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 486088}
-  m_Layer: 3
+  m_Layer: 7
   m_Name: CoM
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -72,7 +72,7 @@ GameObject:
   m_Component:
   - component: {fileID: 499454}
   - component: {fileID: 8209244}
-  m_Layer: 3
+  m_Layer: 7
   m_Name: Engine
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -200,7 +200,7 @@ GameObject:
   m_Component:
   - component: {fileID: 437638}
   - component: {fileID: 11416046}
-  m_Layer: 3
+  m_Layer: 7
   m_Name: WheelFL
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -259,7 +259,7 @@ GameObject:
   m_Component:
   - component: {fileID: 479678}
   - component: {fileID: 8240860}
-  m_Layer: 3
+  m_Layer: 7
   m_Name: AudioClip Template
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -387,7 +387,7 @@ GameObject:
   m_Component:
   - component: {fileID: 469258}
   - component: {fileID: 11413618}
-  m_Layer: 3
+  m_Layer: 7
   m_Name: WheelRL
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -445,7 +445,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 454646}
-  m_Layer: 3
+  m_Layer: 7
   m_Name: Ackerman
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -477,7 +477,7 @@ GameObject:
   m_Component:
   - component: {fileID: 481362}
   - component: {fileID: 11421898}
-  m_Layer: 3
+  m_Layer: 7
   m_Name: WheelFR
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -536,7 +536,7 @@ GameObject:
   m_Component:
   - component: {fileID: 478598}
   - component: {fileID: 8227860}
-  m_Layer: 3
+  m_Layer: 7
   m_Name: Car Rumble
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -664,7 +664,7 @@ GameObject:
   m_Component:
   - component: {fileID: 484024}
   - component: {fileID: 11416824}
-  m_Layer: 3
+  m_Layer: 7
   m_Name: WheelRR
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -722,7 +722,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 410718}
-  m_Layer: 3
+  m_Layer: 7
   m_Name: WheelColliders
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -758,7 +758,7 @@ GameObject:
   m_Component:
   - component: {fileID: 402208}
   - component: {fileID: 8212736}
-  m_Layer: 3
+  m_Layer: 7
   m_Name: Soft Body Drag
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -886,7 +886,7 @@ GameObject:
   m_Component:
   - component: {fileID: 484558}
   - component: {fileID: 6590873345206511023}
-  m_Layer: 3
+  m_Layer: 7
   m_Name: Audio
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1023,7 +1023,7 @@ GameObject:
   - component: {fileID: 414460}
   - component: {fileID: -5933752808508252161}
   - component: {fileID: 5424516}
-  m_Layer: 3
+  m_Layer: 7
   m_Name: Ambulance
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1075,8 +1075,8 @@ Rigidbody:
   m_GameObject: {fileID: 160018}
   serializedVersion: 2
   m_Mass: 1600
-  m_Drag: 0
-  m_AngularDrag: 0
+  m_Drag: 10
+  m_AngularDrag: 10
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 1
@@ -1092,7 +1092,7 @@ GameObject:
   m_Component:
   - component: {fileID: 456904}
   - component: {fileID: 8202372}
-  m_Layer: 3
+  m_Layer: 7
   m_Name: Tire Offroad
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1220,7 +1220,7 @@ GameObject:
   m_Component:
   - component: {fileID: 431718}
   - component: {fileID: 8283282}
-  m_Layer: 3
+  m_Layer: 7
   m_Name: Tire Skid
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1347,7 +1347,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 483996}
-  m_Layer: 3
+  m_Layer: 7
   m_Name: DriverHeadPivot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1380,7 +1380,7 @@ GameObject:
   m_Component:
   - component: {fileID: 496136}
   - component: {fileID: 8274586}
-  m_Layer: 3
+  m_Layer: 7
   m_Name: Hard Body Drag
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1510,7 +1510,7 @@ GameObject:
   - component: {fileID: 7601328887712835646}
   - component: {fileID: 7120001915872831928}
   - component: {fileID: 5483217571936706785}
-  m_Layer: 3
+  m_Layer: 7
   m_Name: Dynamics
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1602,7 +1602,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6719567112139072087}
   - component: {fileID: 6390204419203408356}
-  m_Layer: 3
+  m_Layer: 7
   m_Name: Aero Front
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1655,7 +1655,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2833941826637269089}
   - component: {fileID: 8055414014186917243}
-  m_Layer: 3
+  m_Layer: 7
   m_Name: Reflection Probe
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1720,7 +1720,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2365244475499506394}
   - component: {fileID: 6641376024995831306}
-  m_Layer: 3
+  m_Layer: 7
   m_Name: Collider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1766,7 +1766,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5011859152261519075}
   - component: {fileID: 4202076056403106202}
-  m_Layer: 3
+  m_Layer: 7
   m_Name: Aero Rear
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1818,11 +1818,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 154544753815766594, guid: 520243676ea46ee439626a72de6524be, type: 3}
       propertyPath: m_Layer
-      value: 3
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 430940980765845081, guid: 520243676ea46ee439626a72de6524be, type: 3}
       propertyPath: m_Layer
-      value: 3
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 521031247987255540, guid: 520243676ea46ee439626a72de6524be, type: 3}
       propertyPath: m_Name
@@ -1830,7 +1830,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 521031247987255540, guid: 520243676ea46ee439626a72de6524be, type: 3}
       propertyPath: m_Layer
-      value: 3
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 954299529274528555, guid: 520243676ea46ee439626a72de6524be, type: 3}
       propertyPath: m_RootOrder
@@ -1878,35 +1878,35 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1045681877105942190, guid: 520243676ea46ee439626a72de6524be, type: 3}
       propertyPath: m_Layer
-      value: 3
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 1475853821362269603, guid: 520243676ea46ee439626a72de6524be, type: 3}
       propertyPath: m_Layer
-      value: 3
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 4098227049390195713, guid: 520243676ea46ee439626a72de6524be, type: 3}
       propertyPath: m_Layer
-      value: 3
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 5779565508921256769, guid: 520243676ea46ee439626a72de6524be, type: 3}
       propertyPath: m_Layer
-      value: 3
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 6181333661203159547, guid: 520243676ea46ee439626a72de6524be, type: 3}
       propertyPath: m_Layer
-      value: 3
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 7039577770390469544, guid: 520243676ea46ee439626a72de6524be, type: 3}
       propertyPath: m_Layer
-      value: 3
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 7160980190339609548, guid: 520243676ea46ee439626a72de6524be, type: 3}
       propertyPath: m_Layer
-      value: 3
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 8459247142837686673, guid: 520243676ea46ee439626a72de6524be, type: 3}
       propertyPath: m_Layer
-      value: 3
+      value: 7
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 520243676ea46ee439626a72de6524be, type: 3}

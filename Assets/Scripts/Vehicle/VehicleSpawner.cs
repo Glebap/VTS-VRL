@@ -13,4 +13,9 @@ public class VehicleSpawner : MonoBehaviour
 	{
 		return Instantiate(_pLayerVehiclePrefab, _spawnPoint.position, _spawnPoint.rotation, transform).Base;
 	}
+	
+	public Vehicle SpawnVehicle()
+	{
+		return Instantiate(_vehiclePrefab, _spawnPoint.position, _spawnPoint.rotation, transform);
+	}
 }

@@ -56,19 +56,12 @@ public class NearVehicleObserver : MonoBehaviour
             : lenght;
     }
 
-    
     private bool IsAnyVehicleInProximity(out int count)
     {
         count = Physics.OverlapSphereNonAlloc(_vehicleTransform.position, 
             _maxDistance, _nearVehiclesColliders, _vehicleLayerMask);
 
         return count > 0;
-    }
-
-    private bool IsVehicleVisible(Vector3 vehiclePosition)
-    {
-        return IsVehicleWithinFieldOfView(vehiclePosition) 
-               && !HasObstacleInLineOfSight(vehiclePosition);
     }
 
     private bool HasObstacleInLineOfSight(Vector3 vehiclePosition)
@@ -88,6 +81,12 @@ public class NearVehicleObserver : MonoBehaviour
             * Mathf.Deg2Rad / 2f) *  _mainCamera.aspect) * Mathf.Rad2Deg;
 
         return Vector3.Angle(toTarget, cameraTransform.forward) <= horizontalFieldOfView / 2f;
+    }
+    
+    private bool IsVehicleVisible(Vector3 vehiclePosition)
+    {
+        return IsVehicleWithinFieldOfView(vehiclePosition) 
+               && !HasObstacleInLineOfSight(vehiclePosition);
     }
 
 }

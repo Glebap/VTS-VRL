@@ -8,12 +8,27 @@ public class HUD : MonoBehaviour
     [SerializeField] private VehicleDataView[] _views;
     
     private PlayerVehicleDataProvider _playerVehicleDataProvider;
+    private MonoBehaviour _routineHandler;
+    private Coroutine _updateCoroutine; 
 
 
     public void Initialize(PlayerVehicleDataProvider vehicleDataProvider, MonoBehaviour routineHandler)
     {
         _playerVehicleDataProvider = vehicleDataProvider;
-        routineHandler.StartCoroutine(UpdateCoroutine());
+        _routineHandler = routineHandler;
+    }
+
+    public void Enable()
+    {
+        _updateCoroutine ??= _routineHandler.StartCoroutine(UpdateCoroutine());
+    }
+    
+    private void Disable()
+    {
+        if (_updateCoroutine == null) return;
+        
+        StopCoroutine(_updateCoroutine);
+        _updateCoroutine = null;
     }
     
     private IEnumerator UpdateCoroutine()

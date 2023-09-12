@@ -20,5 +20,7 @@ public class Bootstrap : MonoBehaviour
 		_hud.Initialize(playerVehicleDataProvider, this);
 		_cameraController.target = playerVehicleBase.transform;
 		_menuOverlay.vehicle = playerVehicleBase;
+		
+		_hud.Enable();
 	}
 }
